@@ -116,18 +116,40 @@ public class AdminDao {
 		return roomList;
 	}
 	
-	public int insertRoom(Room room) {
-		int roomcnt = sqlSessionTemplate.insert(namespace + ".insertRoom", room);
-		return roomcnt;
-	}
 
 	public int insertHotel(Hotel hotel) {
 		int hotelcnt = sqlSessionTemplate.insert(namespace+ ".insertHotel", hotel);
 		return hotelcnt;
 	}
+
+	public int insertRoom(Room room) {
+		int roomcnt = sqlSessionTemplate.insert(namespace + ".insertRoom", room);
+		return roomcnt;
+	}
+
+	public void updateHotel(Hotel hotel) {
+		sqlSessionTemplate.update(namespace + ".updateHotel", hotel);
+	}
+
+	/*public int updateRoom(Room room) {
+		int cnt = sqlSessionTemplate.update(namespace+ ".updateRoom", room);
+		return cnt;
+	}*/
 	
-	
-	
-	
+	public void deleteHotel(int h_num) {
+		sqlSessionTemplate.delete(namespace + ".deleteHotel", h_num);
+	}
+
+	public void deleteHotelRoom(int h_num) {
+		sqlSessionTemplate.delete(namespace + ".deleteHotelRoom", h_num);
+		
+	}
+
+	public Member getOneMember(int m_num) {
+		Member member = sqlSessionTemplate.selectOne(namespace +".seletOneMember", m_num);
+		return member;
+	}
+
+
 	
 }
