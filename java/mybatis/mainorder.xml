@@ -14,9 +14,21 @@
   		select max(o_num) from mainorder
   	</select>
   	
-  	<!-- <select id="getSellerOrders" resultType="MyMainOrder">
+  	<select id="getSellerOrders" resultType="MyMainOrder">
   		select * from mainorder
-  	</select> -->
+  	</select>
+  	
+  	<select id="getMemberOrders" resultType="MyMainOrder">
+  		select * from mainorder
+  		where m_num = #{m_num}
+  	
+  	</select>
+  	
+  	<update id="updateChecker">
+  	update mainorder
+  	set o_checker = 1
+  	where o_num = #{onum}
+  	</update>
   
   
   </mapper>

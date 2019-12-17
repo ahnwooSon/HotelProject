@@ -10,13 +10,13 @@
 	</insert>
 	
 	<select id="getRoomList" resultType="MyRoom">
-		select * from rooms where h_num=#{h_num}
+		select r_type, r_person, r_price, r_breakfast, r_stock
+		from rooms where h_num=#{h_num}
 	</select>
 	
 	<select id="getRoomAllList" resultType="MyRoom">
 		select * from rooms
 	</select>
-	
 	
 
 	

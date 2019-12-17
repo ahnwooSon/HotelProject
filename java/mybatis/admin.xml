@@ -159,10 +159,49 @@
 		insert into members values(member_seq.nextval,#{m_email},#{m_password},#{m_nickname},#{m_name},#{m_phone})	
 	</insert>
 	
+	<select id="seletOneMember" resultType="Mymember">
+		select * from members where m_num=#{m_num}
+	</select>
 	
-	<!-- Hotel -->
 	
-	<select id="getHotelCount" resultType="int">
+	<!-- Hotel, rooms -->
+	<update id="updateHotel">
+		update hotel
+		set h_name=#{h_name}, s_num=#{s_num}, h_nation=#{h_nation}, h_address1=#{h_address1},
+		h_address2=#{h_address2},h_type=#{h_type}, h_phone=#{h_phone},h_room_num=#{h_room_num},h_facilities=#{h_facilities},h_internet=#{h_internet},
+		h_animal=#{h_animal},h_parking=#{h_parking},h_smoke=#{h_smoke},h_language=#{h_language},h_image=#{h_image},
+		h_hotel_url=#{h_hotel_url}, h_comment=#{h_comment}
+		where h_num=#{h_num}
+	</update>
+	
+	<update id="updateRoom">
+		update rooms
+		set r_type=#{r_type}, r_price=#{r_price}, r_person=#{r_person}, r_breakfast=#{r_breakfast}, r_stock=#{r_stock}
+		where r_num=#{r_num}	
+	</update>
+	
+	<delete id="deleteHotel">
+		delete from hotel where h_num=#{h_num}
+	</delete>
+	
+	<delete id="deleteHotelRoom">
+		delete from rooms where h_num=#{h_num}
+	</delete>
+
+	<insert id="insertHotel">
+      insert into hotel
+      values(hotel_seq.nextval,#{s_num, jdbcType=INTEGER},#{h_name,jdbcType=VARCHAR},#{h_nation,jdbcType=VARCHAR},#{h_address1,jdbcType=VARCHAR},
+      #{h_address2,jdbcType=VARCHAR},#{h_type,jdbcType=VARCHAR},#{h_phone,jdbcType=VARCHAR},#{h_room_num, jdbcType=INTEGER},#{h_facilities,jdbcType=VARCHAR},#{h_internet,jdbcType=VARCHAR},
+      #{h_animal,jdbcType=VARCHAR},#{h_parking,jdbcType=VARCHAR},#{h_smoke,jdbcType=VARCHAR},#{h_language,jdbcType=VARCHAR},#{h_image},
+      #{h_hotel_url, jdbcType=VARCHAR},#{h_comment,jdbcType=VARCHAR}, #{h_grade,jdbcType=VARCHAR})  
+   </insert>  
+
+	<insert id="insertRoom">
+		insert into rooms values(room_seq.nextval, #{h_num}, #{r_type}, #{r_price}, 
+		#{r_person}, #{r_breakfast}, #{r_stock})
+	</insert> 
+	
+ 	<!-- <select id="getHotelCount" resultType="int">
 		select count(*) from hotel where selnum=#{num}
 	</select>
 	
@@ -172,27 +211,12 @@
 	
 	<select id="getRoomList" resultType="MyRoom">
 		select * from rooms where hname=#{hname}
-	</select>
+	</select> 
 	
-	<insert id="insertRoom">
-		insert into rooms values(room_seq.nextval, #{selnum}, #{r_type}, #{r_price}, #{hname}, 
-		#{r_person}, #{r_breakfast}, #{r_stock})
-	</insert>
-	
-<!-- 	<insert id="insertHotel"> -->
-<!-- 		insert into hotel  -->
-<!-- 		values(hotel_seq.nextval, #{selNum}, #{h_name}, #{h_nation},  -->
-<!-- 		#{h_address1}, #{h_address2}, #{h_type}, #{h_phone}, #{h_room_num}, -->
-<!-- 		#{h_facilities}, #{h_internet}, #{h_animal}, #{h_parking}, #{h_smoke},  -->
-<!-- 		#{h_language}, #{h_image}, #{h_hotel_url}, #{h_comment}) -->
-<!-- 	</insert> -->
-	
-	<insert id="insertHotel">
-      insert into hotel
-      values(hotel_seq.nextval,#{selNum},#{h_name},#{h_nation},#{h_address1},
-      #{h_address2},#{h_type},#{h_phone},#{h_room_num, jdbcType=VARCHAR},#{h_facilities},#{h_internet},
-      #{h_animal},#{h_parking},#{h_smoke},#{h_language},#{h_image},
-      #{h_hotel_url},#{h_comment})  
-   </insert>
+	-->
+   
+   
+  
+
 	
 </mapper>
