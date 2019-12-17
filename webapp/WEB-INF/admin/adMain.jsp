@@ -9,38 +9,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Admin Main</title>
 
-
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-<script type="text/javascript">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	
-</script>
-
-
-
-<style type="text/css">
-body {
-	
-}
-
-.container {
-	padding-right: 5px;
-	padding-left: 5px;
-	margin-right: auto;
-	margin-left: auto;
-}
-
-.row {
-	border: 1px solid black;
-}
-</style>
-
-
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 
 
 
@@ -58,66 +32,72 @@ body {
 		}
 	%>
 
+<%@include file="/WEB-INF/common/header.jsp"%>
 
 	<div class="container">
-
 		<div class="row">
 			<div class="col">
 
-				<header>
-					<a href="main.jsp" class="main">호텔로고자리</a> <a href="logout.mem"
-						style="float: right; margin: 20px;">로그아웃</a> <span
-						style="float: right; margin: 20px;">"${sessionScope.loginfo }"</span>
-					<a href="info.mem" style="float: right; margin: 20px;">내 정보</a>
-
-				</header>
 
 			</div>
 		</div>
 
 
 
-
 		<div class="row">
-			<div class="col">
-				<div class="row">
-					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail"> <img src="..." alt="...">
-						</a>
+			<div class="col-md-12">
+
+				<ul class="nav nav-tabs nav-justified">
+					<li role="presentation" class="active"><a href="#">Home</a></li>
+					<li role="presentation"><a href="#">Seller</a></li>
+					<li role="presentation"><a href="#">Member</a></li>
+					<li role="presentation"><a href="#">QA</a></li>
+					<li role="presentation"><a href="#">Comment</a></li>
+				</ul>
+			<div>
+		</div>
+					<div class="row">
+						<div class="col-xs-6 col-md-6">
+							<a href="listSel.ad" class="thumbnail">Seller Management<img
+								src="..." alt="...">
+							</a>
+						</div>
+						<div class="col-xs-6 col-md-6">
+							<a href="listMem.ad" class="thumbnail">Member Management<img
+								src="..." alt="...">
+							</a>
+						</div>
 					</div>
-					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail"> <img src="..." alt="...">
-						</a>
+
+					<div class="row">
+						<div class="col-xs-6 col-md-6">
+							<a href="listQa.ad" class="thumbnail">QA Management <img
+								src="..." alt="...">
+							</a>
+						</div>
+						<div class="col-xs-6 col-md-6">
+							<a href="#" class="thumbnail">Comment Management<img
+								src="..." alt="...">
+							</a>
+						</div>
 					</div>
-					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail"> <img src="..." alt="...">
-						</a>
-					</div>
-					...
+
+
 				</div>
-
-
-
 			</div>
+
 		</div>
-
-
-		<div class="row">
-			<div class="col-md-4">
-				<a href="listSel.ad">Seller관리</a>
-			</div>
-			<div class="col-md-4">
-				<a href="listQa.ad">QA관리</a>
-			</div>
-			<div class="col-md-4">
-				<a href="listMem.ad">Member관리</a>
-			</div>
-		</div>
-
-
 
 
 	</div>
+
+
+
+
+
+
+
+
 
 
 

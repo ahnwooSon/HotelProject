@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="./../common/common.jsp"%>
-<%-- <%@include file="./../WEB-INF/common/common.jsp" %> --%>
 <%@ page import="member.model.Member"%>
+<%@include file="./../common/common.jsp"%>
 
 <!DOCTYPE html>
 <html>
@@ -105,12 +104,12 @@ hr {
 <script src="<c:url value="/js/bootstrap.min.js" />"></script>
 <script type="text/javascript" src="resources/js/jquery.js"></script>
 
-<link rel="stylesheet"
+<!-- <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
 
 <script type="text/javascript">
 	
@@ -191,6 +190,8 @@ hr {
 </script>
 </head>
 <body>
+	<%@include file="/WEB-INF/common/header.jsp"%>
+
 
 	<%
 		if (session.getAttribute("loginfo") != null) {
@@ -199,6 +200,7 @@ hr {
 			session.setAttribute("m_num", m_num);
 		}
 	%>
+
 
 	<div class="container">
 		<div class="row">
@@ -226,19 +228,6 @@ hr {
 						</h4>
 					</dt>
 					<dd>예약관리는 로그인하신 후 내정보보기-[예약확인]에서 가능합니다.</dd>
-					<dt>
-						<h4>
-							정해진 체크인 시간 외에 도착할 것 같습니다. 체크인이 가능할까요?<span>▼</span>
-						</h4>
-					</dt>
-					<dd>이는 숙소 재량에 맡겨진 것으로 반드시 보장되지는 않습니다. 이와 관련해 다음의 조치를 취하실 수
-						있습니다. 숙소 정보에서 연락처 찾기/숙소에 연락하기. 또는 고객센터에 문의해주세요.</dd>
-					<dt>
-						<h4>
-							청구서(인보이스)는 어떻게 받을 수 있나요?<span>▼</span>
-						</h4>
-					</dt>
-					<dd>숙소에서 청구서를 발행하므로, 숙소 측에 직접 문의해주시기 바랍니다.</dd>
 					<dt>
 						<h4>
 							숙소에 주차 시설이 있는지 알 수 있나요? 더 자세한 조건으로 검색하고 싶어요.<span>▼</span>
@@ -316,7 +305,7 @@ hr {
 							<label for="q_content">문의 내용</label>
 							<textarea class="form-control"
 								placeholder="상세하게 적어주실수록 좋습니다! (최대 2000Byte)" id="q_content"
-								name="q_comment" style="margin: 0px 0px 0px 0px; height: 150px"
+								name="q_comment" style="margin: 0px 0px 0px 0px; height: 100px"
 								onKeyUp="javascript:fnChkByte(this,'2000')">${qa.q_comment}</textarea>
 							<%-- <textarea name="content" onKeyUp="javascript:fnChkByte(this,'2000')">${qa.q_comment}</textarea> --%>
 							<p>
@@ -343,5 +332,8 @@ hr {
 
 
 	</div>
+	
+
+	
 </body>
 </html>

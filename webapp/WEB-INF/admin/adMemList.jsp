@@ -97,7 +97,7 @@
 						<th>전화번호</th>
 						<th>예약조회</th>
 						<th>수정</th>
-						<th>삭제</th>
+						<!-- <th>삭제</th> -->
 					</tr>
 					<c:forEach items="${memList }" var="mem">
 						<tr>
@@ -107,11 +107,11 @@
 							<td>${mem.m_name}</td>
 							<td>${mem.m_nickname}</td>
 							<td>${mem.m_phone}</td>
-							<td><a href="#">예약조회</a></td>
+							<td><a href="reservationInfo.ad?m_num=${mem.m_num }">예약조회</a></td>
 							<td><a
 								href="updateMem.ad?m_num=${mem.m_num }&pageNumber=${pageInfo.pageNumber}">수정</a></td>
-							<td><a
-								href="deleteMem.ad?m_num=${mem.m_num }&pageNumber=${pageInfo.pageNumber}">삭제</a></td>
+							<%-- <td><a
+								href="deleteMem.ad?m_num=${mem.m_num }&pageNumber=${pageInfo.pageNumber}">삭제</a></td> --%>
 						</tr>
 					</c:forEach>
 				</table>

@@ -64,8 +64,8 @@
 							<c:if test="${whatColumn eq 's_phone' }">selected</c:if>>연락처검색</option>
 						<option value="s_comnumber"
 							<c:if test="${whatColumn eq 's_comnumber' }">selected</c:if>>사업자등록번호검색</option>
-					</select> <input type="text" name="keyword"> <input type="submit"
-						value="검색">
+					</select> <input type="text" name="keyword"> 
+					<input type="submit" value="검색">
 				</form>
 			</div>
 		</div>
@@ -86,7 +86,7 @@
 						<th>매물조회</th>
 						<th>정보수정</th>
 
-						<th>삭제</th>
+						<!-- <th>삭제</th> -->
 					</tr>
 					<c:forEach items="${selList }" var="sel">
 						<tr>
@@ -96,10 +96,9 @@
 							<td>${sel.s_name}</td>
 							<td>${sel.s_phone}</td>
 							<td>${sel.s_comnumber}</td>
-							<td><a
-								href="listHo.ad?s_num=${sel.s_num }&s_email=${sel.s_email}">매물조회</a></td>
-							<td><a href="selInfo.ad?s_num=${sel.s_num }">정보수정</a></td>
-							<td><a href="deleteSel.ad?s_num=${sel.s_num }">삭제</a></td>
+							<td><a href="hotelNow.ad?s_num=${sel.s_num }">매물 조회</a></td>
+							<td><a href="updateSel.ad?s_num=${sel.s_num }">정보 수정</a></td>
+							<%-- <td><a href="deleteSel.ad?s_num=${sel.s_num }">삭제</a></td> --%>
 						</tr>
 					</c:forEach>
 				</table>

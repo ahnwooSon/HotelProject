@@ -27,16 +27,44 @@
 </style>
 
 <script type="text/javascript">
+
+function deleteMem() {
+			
+	if(confirm("정말 이 사용자를 삭제하시겠습니까?")){
+		var formData = $("#updateForm").serialize();
+		
+		$.ajax({
+			cache : false,	
+			url : "deleteMem.ad",
+			type : "POST",
+			data : formData,
+			success : function(data) {
+				
+				alert("삭제 완료");
+				location.href="<%=request.getContextPath()%>/listMem.ad?pageNumber=${pageNumber}";
+			},
+			
+			error : function(data) {
+				alert("삭제 실패");
+			}
+		});
+	 }	
+			
+}
+</script>
+
+
+<script type="text/javascript">
 	function register() {
 		var chk1 = /^[a-zA-Z0-9]{4,12}$/
 		var chk2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 		
 		var email = document.getElementById("m_email");
-		var password = document.getElementById("m_password");
+		var pwd = document.getElementById("pwd");
+		var pwd1 = document.getElementById("pwd1");
 		var name = document.getElementById("m_name");
 		var nickname = document.getElementById("m_nickname");
 		var phone = document.getElementById("m_phone");
-		
 		
 		if (email.value=="") {
 			alert("이메일을 입력하세요")
@@ -50,16 +78,15 @@
 			return false;
 			}
 		
-		if (password.value=="") {
-			alert("비밀번호를 입력하세요")
-			password.focus();
-			return false;
-			}
-		if (!chk1.test(password.value)) {
+		if(pwd1.value != ""){
+			if (!chk1.test(pwd1.value)) {
 			alert("비밀번호 형식에 맞지 않습니다")
 			password.focus();
 			return false;
+			}
 		}
+		
+	
 		if (name.value=="") {
 			alert("이름을 입력하세요")
 			name.focus();
@@ -75,26 +102,32 @@
 			phone.focus();
 			return false;
 			}
-		var formData = $("#registerForm").serialize();
 		
-		$.ajax({
-			cache : false,
-			url : "insertMem.ad",
-			type : "POST",
-			data : formData,
-			success : function(data) {
-				location.href="listMem.ad";
-			},
-			error : function(data) {
-				alert("가입할 수 없는 이메일입니다.")
-			}
-		});
+		if(confirm("수정하시겠습니까?")) {
+			var formData = $("#updateForm").serialize();
+			
+			$.ajax({
+				cache : false,	
+				url : "updateMem.ad",
+				type : "POST",
+				data : formData,
+				success : function(data) {
+					
+					alert("정보 수정 완료");
+					location.href="<%=request.getContextPath()%>/listMem.ad?pageNumber=${pageNumber}";
+					
+				},
+				error : function(data) {
+					alert("정보 수정 실패");
+				}
+			});
+		}
+		
 	} 
 </script>
 <body>
 
-
-	<%
+<%
 		if (session.getAttribute("loginfo") == null) {
 			response.sendRedirect("main.jsp");
 		} else {
@@ -103,9 +136,8 @@
 				response.sendRedirect("main.jsp");
 			}
 		}
-	%>
-	
-	
+%>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-md-5 mx-auto">
@@ -113,35 +145,59 @@
 					<div class="myform form">
 						<div class="logo mb-3">
 							<div class="col-md-12 text-center">
-								<h1>Member Insert</h1>
+								<h1>Member Info</h1>
 							</div>
 						</div>
-						<form id="registerForm" commandname="register" name="registerForm">
+						<form id="updateForm" commandname="member" name="updateForm">
+							<input type="hidden" name="pageNumber" value="${pageNumber }">
+							<input type="hidden" name="m_num" value="${member.m_num }">
 							<div class="form-group">
 								<label for="exampleInputEmail1">Email address</label> <input
-									type="text" name="m_email" class="form-control" id="m_email" placeholder="Enter Email">
+									type="" name="m_email" class="form-control" id="m_email"
+									value="${member.m_email }" readOnly>
 							</div>
+							
 							<div class="form-group">
 								<label for="exampleInputEmail1">Password</label> <input
-									type="password" name="m_password" id="m_password"
-									class="form-control" placeholder="Enter Password">
+									type="text" name="m_password" id="pwd"
+									class="form-control" 
+									value="${member.m_password }" readOnly>
 							</div>
+							
+							<div class="form-group">
+								<label for="exampleInputEmail1">New Password</label> <input
+									type="text" name="new_m_password" id="pwd1"
+									class="form-control" 
+									value="${member.m_password }">
+							</div>
+	
+							
 							<div class="form-group">
 								<label for="exampleInputEmail1">Name</label> <input type="text"
-									name="m_name" class="form-control" id="m_name" placeholder="Enter Name">
+									name="m_name" class="form-control" id="m_name" placeholder="Enter Name"
+									value="${member.m_name }">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail1">NickName</label> <input
 									type="text" name="m_nickname" class="form-control"
-									id="m_nickname" placeholder="Enter Nickname">
+									id="m_nickname" placeholder="Enter Nickname"
+									value="${member.m_nickname }">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail1">PhoneNumber</label> <input
-									type="text" name="m_phone" id="m_phone" class="form-control" placeholder="Enter Phone">
+									type="text" name="m_phone" id="m_phone" class="form-control" placeholder="Enter Phone"
+									value="${member.m_phone }">
 							</div>
 							<div class="col-md-12 text-center mb-3">
 								<button type="button" id="btnSubmit" onclick="register()"
-									class=" btn btn-block mybtn btn-primary tx-tfm">Insert</button>
+									class=" btn btn-block mybtn btn-primary tx-tfm">정보 수정</button>
+							</div>
+							<div class="col-md-12 ">
+								<div class="form-group">
+									<p class="text-center">
+										<a href="#" id="signin" onclick="deleteMem()">이 사용자 삭제</a>
+									</p>
+								</div>
 							</div>
 						</form>
 					</div>

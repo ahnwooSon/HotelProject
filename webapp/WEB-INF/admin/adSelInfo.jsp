@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="member.model.Member"%>
-<%@include file="./../common/common.jsp"%>
-
-
+<%@ include file="./../common/common.jsp"%>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -43,7 +41,6 @@ height: 700px;
 }
 </style>
 
-<body>
 	<%
 		if (session.getAttribute("loginfo") == null) {
 			response.sendRedirect("main.jsp");
@@ -54,6 +51,7 @@ height: 700px;
 			}
 		}
 	%>
+	
 
 <div class="container">
 <div class="btn btn-default" onclick="change()">메인으로</div>
@@ -106,9 +104,8 @@ height: 700px;
 	</div>
 <div class="col-md-8">
 	<input class="btn btn-primary"  type="submit" value="수정하기">
-	<a class="btn btn-default" href="<%=request.getContextPath() %>/selDelete.sel?num=${seller.s_num }">탈퇴하기</a>
+	<a class="btn btn-default" href="<%=request.getContextPath() %>/deleteSel.ad?s_num=${seller.s_num }">탈퇴하기</a>
 </div>
 </form:form>
 </div>
-</body>
 
