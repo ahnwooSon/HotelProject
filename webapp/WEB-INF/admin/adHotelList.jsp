@@ -21,13 +21,6 @@ table, tr, th, td {
 </head>
 <body>
 	
-	<h2>${num }번 판매자가 등록한 매물 목록</h2>
-	<br>
-	<a href="insertHo.ad?num=${num }">객실 추가</a>
-	<br>
-	<a href="listSel.ad">판매자 관리 페이지로 돌아가기</a>
-	
-
 	<%
 		if (session.getAttribute("loginfo") == null) {
 			response.sendRedirect("main.jsp");
@@ -38,6 +31,16 @@ table, tr, th, td {
 			}
 		}
 	%>
+
+
+
+	<h2>${num }번 판매자가 등록한 매물 목록</h2>
+	<br>
+	<a href="insertHo.ad?num=${num }">객실 추가</a>
+	<br>
+	<a href="listSel.ad">판매자 관리 페이지로 돌아가기</a>
+	
+
 
 
 
