@@ -20,7 +20,7 @@ import utility.Paging;
 @Controller
 public class QaListController {
 	private final String command = "/listQa.ad";
-	private final String getPage = "quest";
+	private final String getPage = "qaList";
 
 	@Autowired
 	private QaDao qDao;
