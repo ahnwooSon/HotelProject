@@ -6,68 +6,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-
-<style>
-
-.drop {
-	position: relative;
-	display: inline-block;
-	float: right;
-	margin: 20px;
-}
-.drop-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-.drop-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-.drop-content a:hover {background-color: #f1f1f1}
-.drop:hover .drop-content {
-  display: block;
-}
-.drop:hover .drop span {
-  background-color: #3e8e41;
-}
-
-</style>
-
-
-
 <script type="text/javascript" src="resources/jquery/jquery.js"></script>
-<link rel="stylesheet"
-	href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css"
-	type="text/css" />
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script> 
 <script type="text/javascript">
-
-
-function login() {
-	var popupX = (window.screen.width/2)-(500/2);
-	var popupY = (window.screen.height/2)-(500/2);
-	
-	window.open(	
-			'login.mem','_blank','height=500, width=500, toolbar=no, menubar=no, location=no, scrollbars=no, status=no, resizable=no, fullscreen=no, channelmode=yes, left='+ popupX +', top='+ popupY
-			); return false
-}
-function logout() {
-	location.href="logout.mem";
-	alert("로그아웃 되었습니다");
-}
-
-<!-- LOGIN END -->
-
-
 $(function(){
 	
 	
@@ -158,9 +101,17 @@ $(function(){
 	});
 	
 	
-
 	
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -185,15 +136,12 @@ $(function(){
 	
 	
 });
-
-
-
-
-
-
-
-
 </script>
+
+
+
+
+
 
 
 <meta charset="UTF-8">
@@ -204,23 +152,28 @@ $(function(){
 <link href="<c:url value="/css/test.css" />" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
+<style>
+/***drop   *********************************************/
+</style>
+
+
 
 
 </head>
 <body>
+<%@include file="/WEB-INF/common/header.jsp"%>
 
-
-
-<header class="main-menu">
+	
+	    
+<%-- <header class="main-menu">
 		<a href="main.jsp" class="main">호텔로고자리</a> 
 		<c:if test="${sessionScope.loginfo == null }">
-			<a class="main-login" href="register.mem" style="float:right; margin:20px;">회원가입</a>
-			<a class="main-login" onclick="login()" href="#" style="float:right; margin:20px;">로그인</a>
-			<!-- <a href="login.mem" style="float: right; margin: 20px;">로그인</a> -->
-			
+			<a class="main-login" href="register.mem" >회원가입</a>
+			<a href="#" onclick="login()" class="main-login">로그인</a>
 		</c:if>
 		<c:if test="${sessionScope.loginfo != null }">
-				<a href="#" onclick="logout()" style="float: right; margin: 20px;">로그아웃</a>
+			<a href="#" onclick="logout()" class="main-login" >로그아웃</a>
+			<span></span>
 			<div class="drop">
 				<span style="color:white">"${sessionScope.loginfo.m_name }"</span>
 				<div class="drop-content">
@@ -228,36 +181,44 @@ $(function(){
 					<a href="memberReservationForm.der">내 예약 현황</a>
 				</div>
 			</div>
+			
+		
 		</c:if>
 	
 		<a class="mainright" href="selMain.sel">판매자</a>
-		<a class="mainright" href="insertQa.ad">고객센터</a>
+		<a class="mainright" href="#">고객센터</a>
 	
-</header>
-
-
+</header> --%>
+	
+	
 
 <div class="main-wrapper">
 	<div class="searcharea">
 	
 	<h3>특가 검색 - 다양한 호텔들을 검색해보세요</h3>
 	<p>아늑한 펜션부터 모던한 아파트까지!</p>
-
-
-			<form action="Search.ho" method="post">
+	
+	
+	
+	
+		<form action="Search.ho" method="post">
 			<div class="searchinput">
 				<i class="material-icons">airplanemode_active</i>
 				<input type="text" name="area" placeholder="지역을 입력하세요">
 			
 				<p class="searcharea-p scheduler"><i class="material-icons">event</i>
-				<input name="checkin" type="text" id="datepicker" placeholder="체크인">
-				<input name="checkout" type="text" id="datepicker2" placeholder="체크아웃">
+				<input name="checkin" type="text" id="datepicker" placeholder="체크인" autocomplete="off">
+				<input name="checkout" type="text" id="datepicker2" placeholder="체크아웃" autocomplete="off">
 				</p>
+				
+				
 
+			
 				<div id="person" class="searcharea-p">&nbsp;<i class="material-icons">face</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;성인&nbsp;:&nbsp;<span class="adult">0</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;아동&nbsp;:&nbsp;<span class="child">0</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;객실&nbsp;:&nbsp;<span class="room" >0</span>&nbsp;</div>
 				<input type="hidden" name="adult" class="adult" value="0">
 				<input type="hidden" name="child" class="child" value="0">
 				<input type="hidden" name="room" class="room" value="0">
+				
 				
 				
 				
@@ -273,14 +234,173 @@ $(function(){
 
 			
 				<input class="mainsubmitbtn" type="submit" value="검색">
-
+			
 			</div>
 		</form>
 	</div>
 </div>
 
 
+
+<div class="middleMain">
+	<div class="row">
+		
+		
+		<div class="oneimage"  style="background: url(resources/img/광고.jpg) no-repeat center top; background-size:contain;">
+			
+		</div>
+		<div class="oneimage"  style="background: url(resources/img/광고2.png) no-repeat center top; background-size:contain;">
+			
+		</div>
 	
-	<footer class="modal-footer footer"> 만든이: 손안우 신서영 윤서호 이병화 </footer>
+	
+	</div>
+	<div class="row">
+		
+		
+		<div class="twoimages"  style="background: url(resources/img/1.jpg) no-repeat center top; background-size:cover;">
+			<p class="imagetext">
+				Seoul
+			</p>
+		</div>
+		
+		<div class="twoimages"  style="background: url(resources/img/2.jpg) no-repeat center top; background-size:cover;">
+			<p class="imagetext">
+				Seoul
+			</p>
+		</div>
+	
+	
+	</div>
+	
+	<div class="row">
+		
+		
+		<div class="threeimages"  style="background: url(resources/img/3.jpg) no-repeat center top; background-size:cover;">
+			<p class="imagetext">
+				Seoul
+			</p>
+		</div>
+		
+		<div class="threeimages"  style="background: url(resources/img/6.jpg) no-repeat center top; background-size:cover;">
+			<p class="imagetext">
+				Seoul
+			</p>
+		</div>
+		
+		<div class="threeimages"  style="background: url(resources/img/5.jpg) no-repeat center top; background-size:cover;">
+			<p class="imagetext">
+				Seoul
+			</p>
+		</div>
+	
+	
+	</div>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="nothingReally">
+		<h3 class="nothingReallyText">시간도 돈도 아끼는 일석이조의 현명한 선택!</h3>
+		<h4 class="nothingReallyText">가입하시면 최고의 특가 정보를 보내드릴게요</h4>
+		<p class="nothingReallyText"><input type="text" placeholder="이메일 주소를 입력해주세요"><button class="nothingReallybtn" type="button">구독하기</button></p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%@include file="/WEB-INF/common/footer.jsp"%>
+
+
+	
+	<!-- <footer class="modal-footer footer">
+		
+		<div class="foot">
+			<div class="logo">
+				<img src="">
+			</div>
+			
+			<div class="companyInfo">
+				<strong>
+					(주)AAA | 대표이사 : XXX | 사업자 등록번호 : 111-11-11111 | 통신판매업 신고 : 강남-14211호 | 메일 : admin@admin.com<br>
+					관광사업자 등록번호 : 제2019-1031호 | 주소 : 이대역 | 호스팅서비스 제공자 : 주식회사 AAA<br>
+					고객센터 : 1577-1577 (오전 9시 - 오후 6시)
+				</strong>
+			</div>
+			
+			<div class="companyInfo2">
+				<table>
+					<tr>
+						<th><a class="footatag" href="#">회사소개</a></th>
+						<th><a class="footatag" href="#">광고&제휴 문의</a></th>
+						<th><a class="footatag" href="#">인재채용</a></th>
+						<th><a class="footatag" href="#">개인정보처리방침</a></th>
+						<th><a class="footatag" href="#">청소년 보호 정책</a></th>
+						<th><a class="footatag" href="#">서비스 이용 약관</a></th>
+						<th><a class="footatag" href="#">위치정보 이용약관</a></th>
+						<th><a class="footatag" href="#">사업자 정보 확인</a></th>
+					</tr>
+				</table>
+			</div>
+	
+			<div class="companySns">
+				<a class="footatag"  href="https://www.facebook.com">FaceBook</a>		
+				<a class="footatag"  href="https://www.instagram.com">Instagram</a>		
+				<a class="footatag"  href="https://www.youtube.com">Youtube</a>		
+				<a class="footatag"  href="https://www.blog.naver.com">Naver Blog</a>		
+				<a class="footatag"  href="https://www.twitter.com">Twitter</a>		
+			</div>
+			
+			<div class="notice">
+				(주) AAA는 통신판매 중개자로서 통신판매의 당사자가 아니며 상품의 예약, 이용 및 환불 등과 관련한 의무와 책임은 각 판매자에게 있습니다.
+			</div>
+		</div>
+	
+	
+	 </footer> -->
 </body>
 </html>
