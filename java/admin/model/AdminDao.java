@@ -97,6 +97,10 @@ public class AdminDao {
 		sqlSessionTemplate.update(namespace + ".updateMem", member);
 	}
 
+	public Member getOneMember(int m_num) {
+		Member member = sqlSessionTemplate.selectOne(namespace +".seletOneMember", m_num);
+		return member;
+	}
 	
 	
 	/*hottel*/
@@ -117,7 +121,7 @@ public class AdminDao {
 	}
 	
 
-	public int insertHotel(Hotel hotel) {
+	/*public int insertHotel(Hotel hotel) {
 		int hotelcnt = sqlSessionTemplate.insert(namespace+ ".insertHotel", hotel);
 		return hotelcnt;
 	}
@@ -131,7 +135,7 @@ public class AdminDao {
 		sqlSessionTemplate.update(namespace + ".updateHotel", hotel);
 	}
 
-	/*public int updateRoom(Room room) {
+	public int updateRoom(Room room) {
 		int cnt = sqlSessionTemplate.update(namespace+ ".updateRoom", room);
 		return cnt;
 	}*/
@@ -145,10 +149,6 @@ public class AdminDao {
 		
 	}
 
-	public Member getOneMember(int m_num) {
-		Member member = sqlSessionTemplate.selectOne(namespace +".seletOneMember", m_num);
-		return member;
-	}
 
 
 	
