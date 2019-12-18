@@ -1,4 +1,4 @@
-package admin.controller;
+/*package admin.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -144,7 +144,7 @@ public class HotelUpdateController {
 		
 		
 		
-		/*int updateCnt = 0;
+		int updateCnt = 0;
 		int deleteCnt = 0;
 		int insertCnt = 0;
 		
@@ -163,11 +163,11 @@ public class HotelUpdateController {
 			roomcnt += adDao.updateRoom(room);
 			System.out.println("room[i]:"+ i+","+ room);
 		}
-		System.out.println("객실수정"); */
+		System.out.println("객실수정"); 
 		
 		int s_num = hotel.getS_num();
 
 		return gotoPage + "?s_num=" + s_num;
 	}
 
-}
+}*/

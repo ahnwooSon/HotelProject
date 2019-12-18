@@ -31,8 +31,7 @@ public class QaListController {
 			@RequestParam(value = "pageSize", required = false) String pageSize, 
 			@RequestParam(value = "whatColumn", required = false) String whatColumn,
 			@RequestParam(value = "keyword", required = false) String keyword,
-			Model model,
-			HttpServletRequest request) {
+			Model model, HttpServletRequest request) {
 		
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("whatColumn", whatColumn);
@@ -48,6 +47,7 @@ public class QaListController {
 		model.addAttribute("whatColumn", whatColumn);
 		model.addAttribute("keyword",keyword);
 		model.addAttribute("qaList", qaList);
+		
 		return getPage;
 	}
 

@@ -47,8 +47,11 @@ public class MemberReservationController {
 	public String doAction(@RequestParam("m_num") int m_num,Model model) {
 		
 		Member login = adDao.getOneMember(m_num);
+		
+		
 		List<MainOrder> mainOrderd = mainOrderDao.getMemberOrders(login);
 		System.out.println("mainorder:"+ mainOrderd);
+		
 		model.addAttribute("mainOrderd", mainOrderd);
 		
 		@SuppressWarnings("rawtypes")
@@ -76,6 +79,8 @@ public class MemberReservationController {
 		System.out.println("tot:"+totalOrder);
 		
 		model.addAttribute("totalOrder",totalOrder);
+		model.addAttribute("m_num", m_num);
+		
 		return getPage;
 	}
 	
