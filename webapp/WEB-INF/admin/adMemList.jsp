@@ -23,14 +23,15 @@
 
 <style type="text/css">
 
-/* .row {
-	border: 1px solid black;
-} 
+table {
+	table-layout: fixed;
+	word-wrap: break-word;
+	/*     overflow-y: hidden; */
+}
 
-.col {
-	border: 1px solid black;
-	
-} */
+#page {
+	text-align: center;
+}
 
 
 </style>
@@ -48,12 +49,12 @@
 			}
 		}
 	%> --%>
-	<%@include file="/WEB-INF/common/header.jsp"%>
+<%@include file="/WEB-INF/common/header.jsp"%>
 	<div class="container">
 
 
 		<div class="row">
-			<div class="col">
+			<div class="col-md-12">
 			
 					<ul class="nav nav-tabs nav-justified">
 						<li role="presentation"><a href="main.ad" id="home" >Home</a></li>
@@ -92,11 +93,11 @@
 		</div>
 
 		<div class="row">
-			<div class="col">
+			<div class="col-md-12">
 
 				<table class="table table-hover table-condensed">
 					<tr>
-						<td colspan="9"><a href="insertMem.ad">추가하기</a></td>
+						<td colspan="8"><a href="insertMem.ad">추가하기</a></td>
 					</tr>
 					<tr>
 						<th>번호</th>
@@ -106,7 +107,7 @@
 						<th>닉네임</th>
 						<th>전화번호</th>
 						<th>예약조회</th>
-						<th>수정</th>
+						<th>정보수정</th>
 						<!-- <th>삭제</th> -->
 					</tr>
 					<c:forEach items="${memList }" var="mem">
@@ -119,7 +120,7 @@
 							<td>${mem.m_phone}</td>
 							<td><a href="reservationInfo.ad?m_num=${mem.m_num }">예약조회</a></td>
 							<td><a
-								href="updateMem.ad?m_num=${mem.m_num }&pageNumber=${pageInfo.pageNumber}">수정</a></td>
+								href="updateMem.ad?m_num=${mem.m_num }&pageNumber=${pageInfo.pageNumber}">정보수정</a></td>
 							<%-- <td><a
 								href="deleteMem.ad?m_num=${mem.m_num }&pageNumber=${pageInfo.pageNumber}">삭제</a></td> --%>
 						</tr>
@@ -128,7 +129,7 @@
 			</div>
 
 		</div>
-		<div class="row">
+		<div class="row" id="page">
 			<div class="col">${pageInfo.pagingHtml}</div>
 		</div>
 

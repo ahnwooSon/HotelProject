@@ -75,6 +75,7 @@ color: black;
 <body>
 
 <%@include file="/WEB-INF/common/header.jsp"%>
+
 <div class="total-container">
 <h2 class="bigtitle">예약 조회</h2>
 

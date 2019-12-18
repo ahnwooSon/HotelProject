@@ -41,6 +41,9 @@ height: 700px;
 }
 </style>
 
+<body>
+<%@include file="/WEB-INF/common/header.jsp"%>
+
 	<%-- <%
 		if (session.getAttribute("loginfo") == null) {
 			response.sendRedirect("main.jsp");
@@ -108,4 +111,4 @@ height: 700px;
 </div>
 </form:form>
 </div>
-
+</body>

@@ -3,6 +3,11 @@
 <%@ page import="member.model.Member"%>
 <%@include file="./../common/common.jsp" %>
 
+<head>
+</head>
+
+<body>
+
 <%-- <%
 		if (session.getAttribute("loginfo") == null) {
 			response.sendRedirect("main.jsp");
@@ -14,7 +19,10 @@
 		}
 %> --%>
 
+
 <p>판매자-계정삽입 페이지</p>
+
+<%@include file="/WEB-INF/common/header.jsp"%>
 
 <form:form commandName="seller" action="insertSel.ad" method="post">
 
@@ -42,9 +50,7 @@
 	</p>
 </form:form>
     
-    
-
-    
+</body>
     
     
     

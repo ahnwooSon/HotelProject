@@ -89,7 +89,7 @@ h4{
 		}
 	%> --%>
 
-
+<%@include file="/WEB-INF/common/header.jsp"%>
 
 <div>header위치</div>
 호텔 예약 현황
