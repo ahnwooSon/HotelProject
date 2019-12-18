@@ -13,9 +13,11 @@
 		<if test="whatColumn == 's_email'">
 			where s_email like #{keyword}
 		</if>
+		
 		<if test="whatColumn == 's_phone'">
 			where s_phone like #{keyword}
 		</if>
+		
 		<if test="whatColumn == 's_comnumber'">
 			where s_comnumber like #{keyword}
 		</if>
