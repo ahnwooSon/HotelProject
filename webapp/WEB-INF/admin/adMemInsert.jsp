@@ -94,7 +94,7 @@
 <body>
 
 
-	<%
+	<%-- <%
 		if (session.getAttribute("loginfo") == null) {
 			response.sendRedirect("main.jsp");
 		} else {
@@ -103,7 +103,7 @@
 				response.sendRedirect("main.jsp");
 			}
 		}
-	%>
+	%> --%>
 	
 	
 	<div class="container">

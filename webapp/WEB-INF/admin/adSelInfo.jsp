@@ -41,7 +41,7 @@ height: 700px;
 }
 </style>
 
-	<%
+	<%-- <%
 		if (session.getAttribute("loginfo") == null) {
 			response.sendRedirect("main.jsp");
 		} else {
@@ -50,7 +50,7 @@ height: 700px;
 				response.sendRedirect("main.jsp");
 			}
 		}
-	%>
+	%> --%>
 	
 
 <div class="container">

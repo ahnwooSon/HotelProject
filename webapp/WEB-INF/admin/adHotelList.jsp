@@ -21,7 +21,7 @@ table, tr, th, td {
 </head>
 <body>
 	
-	<%
+	<%-- <%
 		if (session.getAttribute("loginfo") == null) {
 			response.sendRedirect("main.jsp");
 		} else {
@@ -30,7 +30,7 @@ table, tr, th, td {
 				response.sendRedirect("main.jsp");
 			}
 		}
-	%>
+	%> --%>
 
 
 

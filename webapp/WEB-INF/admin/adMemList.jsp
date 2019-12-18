@@ -11,13 +11,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Member List</title>
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet"href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script type="text/javascript">
 	
 	
@@ -28,12 +25,12 @@
 
 /* .row {
 	border: 1px solid black;
-} */
+} 
 
 .col {
 	border: 1px solid black;
 	
-}
+} */
 
 
 </style>
@@ -41,7 +38,7 @@
 
 </head>
 <body>
-	<%
+	<%-- <%
 		if (session.getAttribute("loginfo") == null) {
 			response.sendRedirect("main.jsp");
 		} else {
@@ -50,13 +47,26 @@
 				response.sendRedirect("main.jsp");
 			}
 		}
-	%>
-
+	%> --%>
+	<%@include file="/WEB-INF/common/header.jsp"%>
 	<div class="container">
 
 
 		<div class="row">
-			<div class="col"></div>
+			<div class="col">
+			
+					<ul class="nav nav-tabs nav-justified">
+						<li role="presentation"><a href="main.ad" id="home" >Home</a></li>
+						<li role="presentation"><a href="listSel.ad" id="seller">Seller</a></li>
+						<li role="presentation" class="active"><a href="listMem.ad" id="member">Member</a></li>
+						<li role="presentation"><a href="listQa.ad" id="qa">QA</a></li>
+						<li role="presentation"><a href="#" >Comment</a></li>
+					</ul>
+			
+			
+			
+			
+			</div>
 		</div>
 		<div class="row">
 			<div class="col page-header">
@@ -72,11 +82,11 @@
 			<div class="col">
 				<form action="listMem.ad" method="get">
 					<select name="whatColumn">
-						<option value="all">전체 검색</option>
-						<option value="m_email">이메일 검색</option>
-						<option value="m_name">이름 검색</option>
-					</select> <input type="text" name="keyword"> <input type="submit"
-						value="검색">
+						<option value="all" <c:if test="${whatColumn eq 'all' }">selected</c:if>>전체 보기</option>
+						<option value="m_email" <c:if test="${whatColumn eq 'm_email' }">selected</c:if>>이메일 검색</option>
+						<option value="m_name" <c:if test="${whatColumn eq 'm_name' }">selected</c:if>>이름 검색</option>
+					</select> <input type="text" name="keyword"> 
+					<input type="submit"value="검색">
 				</form>
 			</div>
 		</div>
@@ -84,7 +94,7 @@
 		<div class="row">
 			<div class="col">
 
-				<table border="1">
+				<table class="table table-hover table-condensed">
 					<tr>
 						<td colspan="9"><a href="insertMem.ad">추가하기</a></td>
 					</tr>

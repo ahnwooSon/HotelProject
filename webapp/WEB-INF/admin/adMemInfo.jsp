@@ -127,7 +127,7 @@ function deleteMem() {
 </script>
 <body>
 
-<%
+	<%-- <%
 		if (session.getAttribute("loginfo") == null) {
 			response.sendRedirect("main.jsp");
 		} else {
@@ -136,7 +136,7 @@ function deleteMem() {
 				response.sendRedirect("main.jsp");
 			}
 		}
-%>
+	%> --%>
 
 	<div class="container">
 		<div class="row">

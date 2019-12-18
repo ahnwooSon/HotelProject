@@ -193,13 +193,13 @@ hr {
 	<%@include file="/WEB-INF/common/header.jsp"%>
 
 
-	<%
+	<%-- <%
 		if (session.getAttribute("loginfo") != null) {
 			Member loginfo = (Member) session.getAttribute("loginfo");
 			int m_num = loginfo.getM_num();
 			session.setAttribute("m_num", m_num);
 		}
-	%>
+	%> --%>
 
 
 	<div class="container">
