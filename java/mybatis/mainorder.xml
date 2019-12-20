@@ -29,6 +29,19 @@
   	set o_checker = 1
   	where o_num = #{onum}
   	</update>
+  	
+  	
+  	<delete id="deleteMOrder">
+  		delete from mainorder
+  		where o_num=#{o_num}
+  	</delete>
+  	
+  	<update id="checkReview">
+  		update mainorder set o_reviewchecker = 1
+  		where o_num=${o_num}
+  	</update>
+  	
+  	
   
   
   </mapper>
