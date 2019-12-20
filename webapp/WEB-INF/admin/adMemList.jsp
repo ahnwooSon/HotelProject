@@ -39,16 +39,7 @@ table {
 
 </head>
 <body>
-	<%-- <%
-		if (session.getAttribute("loginfo") == null) {
-			response.sendRedirect("main.jsp");
-		} else {
-			Member loginfo = (Member) session.getAttribute("loginfo");
-			if (!loginfo.getM_email().equals("admin@admin.com")) {
-				response.sendRedirect("main.jsp");
-			}
-		}
-	%> --%>
+
 <%@include file="/WEB-INF/common/header.jsp"%>
 	<div class="container">
 
@@ -61,7 +52,7 @@ table {
 						<li role="presentation"><a href="listSel.ad" id="seller">Seller</a></li>
 						<li role="presentation" class="active"><a href="listMem.ad" id="member">Member</a></li>
 						<li role="presentation"><a href="listQa.ad" id="qa">QA</a></li>
-						<li role="presentation"><a href="#" >Comment</a></li>
+						<li role="presentation"><a href="listReview.ad" >Reviews</a></li>
 					</ul>
 			
 			
@@ -87,7 +78,7 @@ table {
 						<option value="m_email" <c:if test="${whatColumn eq 'm_email' }">selected</c:if>>이메일 검색</option>
 						<option value="m_name" <c:if test="${whatColumn eq 'm_name' }">selected</c:if>>이름 검색</option>
 					</select> <input type="text" name="keyword"> 
-					<input type="submit"value="검색">
+					<input type="submit" value="검색">
 				</form>
 			</div>
 		</div>
@@ -106,7 +97,7 @@ table {
 						<th>이름</th>
 						<th>닉네임</th>
 						<th>전화번호</th>
-						<th>예약조회</th>
+						<th>예약관리</th>
 						<th>정보수정</th>
 						<!-- <th>삭제</th> -->
 					</tr>
@@ -118,7 +109,7 @@ table {
 							<td>${mem.m_name}</td>
 							<td>${mem.m_nickname}</td>
 							<td>${mem.m_phone}</td>
-							<td><a href="reservationInfo.ad?m_num=${mem.m_num }">예약조회</a></td>
+							<td><a href="reservationInfo.ad?m_num=${mem.m_num }">예약관리</a></td>
 							<td><a
 								href="updateMem.ad?m_num=${mem.m_num }&pageNumber=${pageInfo.pageNumber}">정보수정</a></td>
 							<%-- <td><a

@@ -71,6 +71,11 @@ color: black;
     padding: 3px;
 }
 </style>
+
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script> 
+<script>
+
+</script>
 </head>
 <body>
 
@@ -78,8 +83,6 @@ color: black;
 
 <div class="total-container">
 <h2 class="bigtitle">예약 조회</h2>
-
-<a href="reservate.">예약추가</a>
 <a href="listMem.ad">돌아가기</a>
 <hr>
 
@@ -139,21 +142,20 @@ color: black;
 	<tr>
 		<td>
 			<div>
-			예약한 방 : ${ro[j].r_type }&nbsp;&nbsp;&nbsp; ${od[i].o_count } 개
-			<c:if test="${mo.o_checker ==0 }">
-			<a href="deleteOd.ad?mo=${mo.o_num }&od=${od[i].r_num}&m_num=${m_num}">취소</a>
+				예약한 방 : ${ro[j].r_type }&nbsp;&nbsp;&nbsp; ${od[i].o_count } 개
+				<c:if test="${mo.o_checker ==0 }">
+				<a href="deleteOrder.ad?mo=${mo.o_num }&od=${od[i].r_num}&m_num=${m_num}">취소</a>
 			</c:if>
 			</div>
-			
+		
 		</td>
 	</tr>
-
+	
 </c:if>
 </c:forEach>
 </c:if>
 </c:forEach>
-
-	<tr>
+<tr>
 		<td>
 			영문 이름 : ${mo.o_engname } 
 		
@@ -173,11 +175,17 @@ color: black;
 	</tr>
 	<tr>
 		<td>
-			<button class="button" type="button">결제취소</button>
-		
+			
+ 			<form action="deleteOrder.ad" method="post">
+			<input type="hidden" name="mo" value="${mo.o_num }">
+			<input type="hidden" name="m_num" value=${m_num }>
+			<button class="button" type="submit" >결제취소</button>
+			</form>
+
 		</td>
 	</tr>
 </table>  
+<hr>
 </c:forEach>
 
 

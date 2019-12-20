@@ -8,18 +8,6 @@
 
 <body>
 
-<%-- <%
-		if (session.getAttribute("loginfo") == null) {
-			response.sendRedirect("main.jsp");
-		} else {
-			Member loginfo = (Member) session.getAttribute("loginfo");
-			if (!loginfo.getM_email().equals("admin@admin.com")) {
-				response.sendRedirect("main.jsp");
-			}
-		}
-%> --%>
-
-
 <p>판매자-계정삽입 페이지</p>
 
 <%@include file="/WEB-INF/common/header.jsp"%>

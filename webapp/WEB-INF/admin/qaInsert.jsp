@@ -13,55 +13,44 @@
 body {
 	background-color: rgba(255, 255, 255, .99);
 }
-
 label {
 	color: gray;
 }
-
 .loginlink {
 	text-decoration: underline;
 	font-weight: bold;
 }
-
 .container {
 	width: 90%;
 }
-
 h1 {
 	text-align: center;
 	margin-bottom: 200px;
 }
-
 h4 {
 	text-align: center;
 	margin: 20px;
 }
-
 span {
 	float: right;
 	display: block;
 	text-align: right;
 }
-
 #faq>dt {
 	border-bottom: 1px solid #CCC;
 }
-
 #faq>dd {
 	display: none;
 	padding: 10px;
 }
-
 form {
 	width: 100%;
 	margin: 0 auto;
 }
-
 .err {
 	float: left;
 	color: red;
 }
-
 <!--
 -->
 img {
@@ -70,7 +59,6 @@ img {
 	height: 32px;
 	border: 0
 }
-
 ul {
 	list-style: none;
 	border: 1px solid #CCC;
@@ -80,7 +68,6 @@ ul {
 	padding: 0;
 	heigth: 150px;
 }
-
 li {
 	list-style: none;
 	border: 1px solid #CCC;
@@ -91,7 +78,6 @@ li {
 	color: #CCC;
 	text-align: center;
 }
-
 hr {
 	float: clear;
 }
@@ -109,19 +95,13 @@ hr {
 	
 	$(function() {
 		$("#faq > dt").click(showHide);
-
 	});
-
 	function showHide(e) {
 		var $sbj = $(e.currentTarget);
-
 		$sbj.prevAll("dd:visible").slideUp("fast", bulletChange);
-
 		$sbj.next().nextAll("dd:visible").slideUp("fast", bulletChange);
 		//이미닫은게 반응하면 안되서 한번 건너 뛰기 위해 .next를 한번 씀
-
 		$sbj.next().slideToggle("fast", bulletChange);
-
 		function bulletChange() {
 			var $sbjBullet = $(this).prev().find('span');
 			//하나 하나 찾아가야 문자가 열고닫을때 바뀐다
@@ -134,18 +114,14 @@ hr {
 			}
 		}
 	}
-
-	
 	
 	function fnChkByte(obj, maxByte) {
 		var str = obj.value;
 		var str_len = str.length;
-
 		var rbyte = 0;
 		var rlen = 0;
 		var one_char = "";
 		var str2 = "";
-
 		for (var i = 0; i < str_len; i++) {
 			one_char = str.charAt(i);
 			if (escape(one_char).length > 4) {
@@ -153,12 +129,10 @@ hr {
 			} else {
 				rbyte++; //영문 등 나머지 1Byte
 			}
-
 			if (rbyte <= maxByte) {
 				rlen = i + 1; //return할 문자열 갯수
 			}
 		}
-
 		if (rbyte > maxByte) {
 			// alert("한글 "+(maxByte/2)+"자 / 영문 "+maxByte+"자를 초과 입력할 수 없습니다.");
 			alert("메세지는 최대 " + maxByte + "byte를 초과할 수 없습니다.")
@@ -168,44 +142,33 @@ hr {
 		} else {
 			document.getElementById('byteInfo').innerText = rbyte;
 		}
-		
 	}
-	
-	
 	
 	function login(){
 		var popupX = (window.screen.width/2)-(500/2);
 		var popupY = (window.screen.height/2)-(500/2);
 		window.open('login.mem', '_blank', 'height=500, width=500, toolbar=no, menubar=no left='+popupX+', top='+popupY,'true');
 		return false;
-		
 	}
 	
 </script>
 </head>
 <body>
 
-
 	<%@include file="/WEB-INF/common/header.jsp"%>
-
-
-	<%-- <%
+	<% 
 		if (session.getAttribute("loginfo") != null) {
 			Member loginfo = (Member) session.getAttribute("loginfo");
 			int m_num = loginfo.getM_num();
-			session.setAttribute("m_num", m_num);
+			pageContext.setAttribute("m_num", m_num);
 		}
-	%> --%>
-
+	%> 
 
 	<div class="container">
 		<div class="row">
 			<div class="col">
-
 				<h1>도움이 필요하세요?</h1>
-
 				<hr>
-
 				<!-- <div class="top-menu"> 		
 					<ul class="tab"> 
 						<li class="item"><a href="#" class="item-a active">예약관리</a></li>
@@ -255,8 +218,7 @@ hr {
 			<div class="row">
 				<div class="col">
 					<h4>원하는 답을 못 찾으셨나요? ;(</h4>
-					<h4>
-						개인별 맞춤 서비스를 받으시려면 <a class="loginlink" onclick="login()" href="#">로그인</a>을
+					<h4>개인별 맞춤 서비스를 받으시려면 <a class="loginlink" onclick="login()" href="#">로그인</a>을
 						해주세요.
 					</h4>
 				</div>
@@ -275,20 +237,16 @@ hr {
 					<div class="form">
 
 
-						<form:form commandName="qa" method="post" action="insertQa.ad">
+						<form:form commandName="qa" method="POST" action="insertQa.ad">
 
 							<label for="m_email">이메일</label>
 							<input class="form-control" id="m_email" type="text"
 								placeholder="${sessionScope.loginfo.m_email}" readonly>
-							<input type="hidden" name="m_num" value="${sessionScope.m_num}" />
+							<input type="hidden" name="m_num" value="${m_num}" />
 							<br>
 
 							<label for="q_title">문의 분류</label>
-							<%-- <input type="text" class="form-control"
-							placeholder="문의분류를 간단하게 적어주세요.(최대 50Byte)" name="title"
-							id="title" value="${qna.title }"> --%>
 							<br>
-
 							<select class="form-control" id="q_title" name="q_title">
 								<option value="">선택하세요</option>
 								<option value="예약">예약/숙박관련 문의</option>
@@ -298,23 +256,17 @@ hr {
 							<form:errors class="err" path="q_title" />
 							<br>
 
-							<label for="q_content">문의 내용</label>
+							<label for="q_comment">문의 내용</label>
 							<textarea class="form-control"
-								placeholder="상세하게 적어주실수록 좋습니다! (최대 2000Byte)" id="q_content"
+								placeholder="상세하게 적어주실수록 좋습니다! (최대 2000Byte)" id="q_comment"
 								name="q_comment" style="margin: 0px 0px 0px 0px; height: 100px"
 								onKeyUp="javascript:fnChkByte(this,'2000')">${qa.q_comment}</textarea>
-							<%-- <textarea name="content" onKeyUp="javascript:fnChkByte(this,'2000')">${qa.q_comment}</textarea> --%>
-							<p>
-								<span id="byteInfo">0</span>
-							</p>
+							<p><span>/2000Byte</span><span id="byteInfo">0</span></p>
 							<form:errors class="err" path="q_comment" />
 							<br>
 							<br>
 							<button type="submit" class="btn btn-primary btn-block">보내기</button>
 						</form:form>
-
-
-
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -324,12 +276,6 @@ hr {
 				</div>
 			</div>
 		</c:if>
-
-
-
 	</div>
-	
-
-	
 </body>
 </html>

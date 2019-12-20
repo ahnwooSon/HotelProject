@@ -18,12 +18,10 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-
-
-	
 	
 </script>
 <style type="text/css">
+
 table {
 	table-layout: fixed;
 	word-wrap: break-word;
@@ -44,11 +42,10 @@ table {
 
 
 </style>
-
 </head>
 
-
-<body>	<%@include file="/WEB-INF/common/header.jsp"%>
+<body>	
+<%@include file="/WEB-INF/common/header.jsp"%>
 
 	<div class="container">
 		<!-- <div class="container-fluid"> -->
@@ -59,7 +56,7 @@ table {
 					<li role="presentation"><a href="listSel.ad" id="seller">Seller</a></li>
 					<li role="presentation"><a href="listMem.ad" id="member">Member</a></li>
 					<li role="presentation" class="active"><a href="listQa.ad" id="qa">QA</a></li>
-					<li role="presentation"><a href="#">Comment</a></li>
+					<li role="presentation"><a href="listReview.ad">Reviews</a></li>
 				</ul>
 			</div>
 			
