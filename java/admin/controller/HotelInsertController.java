@@ -44,16 +44,15 @@ public class HotelInsertController {
 		return getPage;
 	}
 	
+	
+	
 	@RequestMapping(value=command, method=RequestMethod.POST)
 	public String doAction(@RequestParam("s_num") int s_num, Hotel hotel, Room rooms, 
 			MultipartHttpServletRequest	mpfRequest) {
-		
 		System.out.println("hotel.getS_num():" + hotel.getS_num());
+		
 		String filePath=application.getRealPath("/resources/Hotelimages/"+hotel.getH_name());
-		
-		
 		List<MultipartFile> fileList=mpfRequest.getFiles("file");
-
 		
 		File file=new File(filePath);
 		System.out.println(filePath);

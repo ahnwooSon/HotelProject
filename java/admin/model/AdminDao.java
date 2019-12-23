@@ -105,7 +105,7 @@ public class AdminDao {
 	}
 	
 	
-	/*hottel*/
+	/*hotel*/
 
 	public int getHotelCount(int num) {
 		int totalCount = sqlSessionTemplate.selectOne(namespace + ".getHotelCount", num);
@@ -151,6 +151,9 @@ public class AdminDao {
 		
 	}
 
+	
+	/* Order */
+	
 	public void deleteMOrder(int o_num) {
 		sqlSessionTemplate.delete(namespace + ".deleteMOrder", o_num);
 		
@@ -167,14 +170,16 @@ public class AdminDao {
 	}
 
 
+	/* Review */
+
 	public int deleteReview(int c_num) {
-		int cnt = sqlSessionTemplate.delete(namespace + ".deleteReview" + c_num);
+		int cnt = sqlSessionTemplate.delete(namespace + ".deleteReview", c_num);
 		return cnt;
 	}
-	
-	
+
+
 	public int getRvcCnt(Map<String,String> map) {
-		int cnt = sqlSessionTemplate.selectOne(namespace + ".getRvcCnt");	//null
+		int cnt = sqlSessionTemplate.selectOne(namespace + ".getRvcCnt");	
 		return cnt;
 	}
 	

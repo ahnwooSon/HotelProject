@@ -1,4 +1,4 @@
-/*package admin.controller;
+package admin.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,9 +29,6 @@ public class HotelUpdateController {
 	private final String gotoPage = "redirect:hotelNow.ad";
 
 	@Autowired
-	private AdminDao adDao;
-
-	@Autowired
 	private HotelDao hotelDao;
 
 	@Autowired
@@ -52,15 +49,18 @@ public class HotelUpdateController {
 	}
 
 	@RequestMapping(value = command, method = RequestMethod.POST)
-	public String doUpdatePost(@RequestParam("filebtn") String doWhat, @RequestParam("originName") String originName,
-			Room rooms, Hotel hotel, MultipartHttpServletRequest mpfRequest, Model model) {
+	public String doUpdatePost(
+			@RequestParam("filebtn") String doWhat, 
+			@RequestParam("originName") String originName,
+			Room rooms, Hotel hotel, 
+			MultipartHttpServletRequest mpfRequest) {
+
 		System.out.println("[POST hotel]:" + hotel);
 
 		List<MultipartFile> fileList = mpfRequest.getFiles("file");
 		String originfilePath = application.getRealPath("/resources/Hotelimages/" + originName);
 		String newfilePath = application.getRealPath("/resources/Hotelimages/" + hotel.getH_name());
 		System.out.println(newfilePath);
-		
 		File originFile = new File(originfilePath);
 		File newFile = new File(newfilePath);
 		String image = "";
@@ -97,14 +97,13 @@ public class HotelUpdateController {
 					e.printStackTrace();
 				}
 				image += fileList.get(i).getOriginalFilename() + ";";
-			} 
-		} 
-		else if(doWhat.equals("add")) {
+			}	//fileList
+		} //change
+		else if (doWhat.equals("add")) {
 			if (originName.equals(hotel.getH_name())) {
 				if (originFile.exists() == false) {
 					originFile.mkdirs();
 				}
-				
 				image += hotelDao.getHotelOne(hotel.getH_num()).getH_image();
 				for (int i = 0; i < fileList.size(); i++) {
 					originFile = new File(originfilePath + File.separator + fileList.get(i).getOriginalFilename());
@@ -117,8 +116,7 @@ public class HotelUpdateController {
 					}
 					image += fileList.get(i).getOriginalFilename() + ";";
 				}
-			} 
-			else {
+			} else {
 				if (originFile.exists()) {
 					originFile.renameTo(newFile);
 				}
@@ -136,38 +134,56 @@ public class HotelUpdateController {
 				}
 			}
 		} else {
-			image+=hotel.getH_image();
+			image += hotel.getH_image();
 		}
 		hotel.setH_image(image);
-		adDao.updateHotel(hotel);
+		hotelDao.updateHotel(hotel);
 		System.out.println("호텔수정완료");
+
+		
+		
 		
 		
 		
 		int updateCnt = 0;
 		int deleteCnt = 0;
 		int insertCnt = 0;
+
 		
-	
-		for(int i=0; i<rooms.getType().length;i++) {			
-			String r_numStr=rooms.getNum()[i]; 
-			String r_type=rooms.getType()[i];
-			int r_price=rooms.getPrice()[i];
-			int r_person=rooms.getPerson()[i];
-			int r_stock=rooms.getStock()[i];
-			String r_breakfast=rooms.getBreakfast()[i];
-			int h_num = hotel.getH_num();
+		for (int i = 0; i < rooms.getType().length; i++) {
 			
-			if()
-			Room room=new Room(type,price,person,stock,breakfast,r_num);
-			roomcnt += adDao.updateRoom(room);
-			System.out.println("room[i]:"+ i+","+ room);
+			
+			System.out.println("rooms:"+ rooms);
+			System.out.println("rooms.getNum()[i]:" + rooms.getNum()[i]);
+			
+			String r_numStr = rooms.getNum()[i];
+				
+			
+			String r_type = rooms.getType()[i];
+			int r_price = rooms.getPrice()[i];
+			int r_person = rooms.getPerson()[i];
+			int r_stock = rooms.getStock()[i];
+			String r_breakfast = rooms.getBreakfast()[i];
+			int h_num = hotel.getH_num();
+
+			if (!r_numStr.equals("")) {
+				int r_num = Integer.parseInt(r_numStr);
+				if (!r_type.equals("remove_thisroom")) {
+
+					Room room = new Room(r_num, r_type, r_price, r_person, r_stock, r_breakfast);
+					updateCnt = roomDao.updateRoom(room);
+				} else {
+					deleteCnt = roomDao.deleteRoom(r_num);
+				}
+			} else {
+				Room room = new Room(r_type, r_price, r_person, r_stock, r_breakfast, h_num);
+				insertCnt += roomDao.insertRoom(room);
+			}
 		}
-		System.out.println("객실수정"); 
-		
-		int s_num = hotel.getS_num();
+		System.out.println("룸변경:" + updateCnt);
+		System.out.println("룸삭제:" + deleteCnt);
+		System.out.println("룸추가:" + insertCnt);
 
-		return gotoPage + "?s_num=" + s_num;
+		return gotoPage + "?s_num=" + hotel.getS_num();
 	}
-
-}*/
+}
