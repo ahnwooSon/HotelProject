@@ -3,6 +3,12 @@
 <%@ page import="member.model.Member"%>
 <%@include file="./../common/common.jsp"%>
 
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+
 <script type="text/javascript" src="resources/jquery/jquery.js"></script>
 <link href="<c:url value="/css/hotelNow.css" />" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -91,9 +97,12 @@ h4{
 				
 <%@include file="/WEB-INF/common/header.jsp"%>
 
+
+	
 <h3 class="top-title">호텔 예약 현황</h3>
 <div class="total-wrapper">
 
+<a href="listSel.ad">판매자목록으로 돌아가기</a><br>
 <a href="insertHo.ad?s_num=${s_num }">추가하기</a>
 
 <br>

@@ -8,20 +8,28 @@
 <title>Insert title here</title>
 
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-<script src="resources/hotelInsert/js/jquery-3.3.1.min.js"></script> 
+<script src="resources/hotelInsertCSS/js/jquery-3.3.1.min.js"></script> 
 <!-- Font-->
-<link rel="stylesheet" type="text/css" href="resources/hotelInsert/css/opensans-font.css">
-<link rel="stylesheet" type="text/css" href="resources/hotelInsert/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+<link rel="stylesheet" type="text/css" href="resources/hotelInsertCSS/css/opensans-font.css">
+<link rel="stylesheet" type="text/css" href="resources/hotelInsertCSS/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
 <!-- Main Style Css -->
-<link rel="stylesheet" href="resources/hotelInsert/css/style.css"/>
+<link rel="stylesheet" href="resources/hotelInsertCSS/css/style.css">
+
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 </head>
-<body>  
+<body> 
+
+
+<%@include file="../common/selHeader.jsp"%> 
 <div class="insertHotel-wrapper">
 	<div class="insertHotel-content">
 		<div class="wizard-form">
 			<form action="insertHo.ad" method="post" enctype="multipart/form-data" id="hotelInsertForm" class="form-register">
+				<input type="hidden" name="s_num" value="${s_num }">
+				
+				
+				
 				<div id="form-total">
 					<!-- SECTION 1 -->
 					<h2>
@@ -39,7 +47,6 @@
 									<fieldset>
 										<legend>Hotel Name</legend>
 										<input type="text" class="form-control" name="h_name" placeholder="Hotel Name" required>
-										<input type="hidden" class="form-control" name="s_num" value="${s_num }">
 									</fieldset>
 								</div>
 								<div class="form-holder">
@@ -587,7 +594,6 @@
 										<fieldset>
 											<legend>Total RoomNumber</legend>
 											<input type="text" class="form-control" id="h_room_num" name="h_room_num" placeholder="Number of Rooms" required>
-											
 										</fieldset>
 									</div>
 								</div>
@@ -598,8 +604,9 @@
 			</div>
 		</div>
 	</div>
+<%@include file="../common/selFooter.jsp"%>
 <!-- <script src="resources/hotelInsert/js/jquery-3.3.1.min.js"></script> -->
-<script src="resources/hotelInsert/js/jquery.steps.js"></script>
-<script src="resources/hotelInsert/js/main.js"></script>
+<script src="resources/hotelInsertCSS/js/jquery.steps.js"></script>
+<script src="resources/hotelInsertCSS/js/main.js"></script>
 </body>
 </html>
