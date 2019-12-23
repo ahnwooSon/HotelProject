@@ -196,7 +196,6 @@
 
 	<select id="getRvcCnt" resultType="int">
 		select count(*)
-		
 		from review c, members m, mainorder o, hotel h, (
 		select o_num, listagg(r_type, ', ') within group (order by od_num) as r_type
 		from (
@@ -204,7 +203,6 @@
 		where r.r_num = od.r_num
 		) group by o_num
 		)op
-		
 		<choose>
 		<when test="whatColumn == 'h_name'">
 		where h.h_name like #{keyword} 
@@ -227,34 +225,11 @@
 		and c.h_num=h.h_num
 		</otherwise>
 		</choose>
-		
-    
-		<!-- <if test="whatColumn == null">
-		where c.m_num = m.m_num 
-		and c.o_num = o.o_num 
-		and o.o_num = op.o_num 
-		and c.h_num=h.h_num
-		</if>
-		<if test="whatColumn == 'h_name'">
-		where h.h_name like #{keyword} 
-		and c.m_num = m.m_num 
-		and c.o_num = o.o_num 
-		and o.o_num = op.o_num 
-		and c.h_num=h.h_num
-		</if>
-		<if test="whatColumn == 'm_nickname'">
-		where m.m_nickname like #{keyword} 
-		and c.m_num = m.m_num
-		and c.o_num = o.o_num 
-		and o.o_num = op.o_num 
-		and c.h_num=h.h_num 
-		</if> -->
 	</select>
-	
+
 	<select id="getRvcList" resultType="member.model.ReviewComposite">
 		select c.c_num, c.c_date, c.c_star, c.c_comment,
 		m.m_nickname, o.o_checkin, o.o_checkout,  op.r_type, h.h_name
-		
 		from review c, members m, mainorder o, hotel h, (
 		select o_num, listagg(r_type, ', ') within group (order by od_num) as r_type
 		from (
@@ -262,7 +237,6 @@
 		where r.r_num = od.r_num
 		) group by o_num
 		)op
-    
    		<choose>
 		<when test="whatColumn == 'h_name'">
 		where h.h_name like #{keyword} 
@@ -285,28 +259,10 @@
 		and c.h_num=h.h_num
 		</otherwise>
 		</choose>
-		
-		<!-- <if test="whatColumn == null">
-		where c.m_num = m.m_num 
-		and c.o_num = o.o_num 
-		and o.o_num = op.o_num 
-		and c.h_num=h.h_num
-		</if>
-		<if test="whatColumn == 'h_name'">
-		where h.h_name like #{keyword} 
-		and c.m_num = m.m_num 
-		and c.o_num = o.o_num 
-		and o.o_num = op.o_num 
-		and c.h_num=h.h_num
-		</if>
-		<if test="whatColumn == 'm_nickname'">
-		where m.m_nickname like #{keyword} 
-		and c.m_num = m.m_num
-		and c.o_num = o.o_num 
-		and o.o_num = op.o_num 
-		and c.h_num=h.h_num 
-		</if> -->
 	</select>
 	
+	<delete id="deleteReview" parameterType="int">
+		delete from review where c_num=#{c_num}
+	</delete>
 
 </mapper>

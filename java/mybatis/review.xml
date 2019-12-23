@@ -14,4 +14,5 @@
 		select * from review
 		where h_num = #{h_num}
 	</select>
+
 </mapper>
