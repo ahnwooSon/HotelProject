@@ -1,6 +1,5 @@
 package admin.model;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -172,12 +171,6 @@ public class AdminDao {
 
 	/* Review */
 
-	public int deleteReview(int c_num) {
-		int cnt = sqlSessionTemplate.delete(namespace + ".deleteReview", c_num);
-		return cnt;
-	}
-
-
 	public int getRvcCnt(Map<String,String> map) {
 		int cnt = sqlSessionTemplate.selectOne(namespace + ".getRvcCnt");	
 		return cnt;
@@ -187,6 +180,11 @@ public class AdminDao {
 		RowBounds row = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
 		List<ReviewComposite> list = sqlSessionTemplate.selectList(namespace + ".getRvcList", map, row);
 		return list;
+	}
+	
+	public int deleteReview(int c_num) {
+		int cnt = sqlSessionTemplate.delete(namespace + ".deleteReview", c_num);
+		return cnt;
 	}
 
 		

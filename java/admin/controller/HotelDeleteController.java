@@ -19,8 +19,8 @@ import hotel.model.RoomDao;
 public class HotelDeleteController {
 
 	private final String command = "/deleteHotel.ad";
-	private final String gotoPage = "redirect:/listSel.ad";
-	
+	private final String gotoPage = "redirect:/hotelNow.ad";
+
 	@Autowired
 	private ServletContext application;
 	@Autowired
@@ -30,12 +30,14 @@ public class HotelDeleteController {
 
 	@RequestMapping(value = command, method = RequestMethod.GET)
 	public String doAction(@RequestParam("h_num") int h_num) {
-
 		Hotel hotel = hotelDao.getHotelOne(h_num);
+		int s_num = hotel.getS_num();
+
 		String filePath = application.getRealPath("/resources/Hotelimages/" + hotel.getH_name());
 		File file = new File(filePath);
-		if (file.exists()) {
-			if (file.isDirectory()) {  
+		boolean isExists = file.exists();
+		if (isExists) {
+			if (file.isDirectory()) {
 				File[] files = file.listFiles();
 				for (int i = 0; i < files.length; i++) {
 					if (files[i].delete()) {
@@ -44,19 +46,17 @@ public class HotelDeleteController {
 						System.out.println(files[i].getName() + "삭제실패");
 					}
 				}
-			}
-			if (file.delete()) {
+			} else if (file.delete()) {
 				System.out.println("파일삭제 성공");
 			} else {
 				System.out.println("파일삭제 실패");
 			}
 		} else {
-			System.out.println("파일이 존재하지 않습니다");
+			System.out.println("삭제할 파일 없음");
+
 		}
-		
-		adDao.deleteHotel(h_num);
 		adDao.deleteHotelRoom(h_num);
-		int s_num= hotel.getS_num();
-		return gotoPage+"?s_num"+s_num;
+		adDao.deleteHotel(h_num);
+		return gotoPage + "?s_num=" + s_num;
 	}
 }
