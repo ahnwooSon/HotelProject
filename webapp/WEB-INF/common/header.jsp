@@ -19,14 +19,14 @@ function logout() {
 	alert("로그아웃 되었습니다");
 }
 </script>
-
-
-
 <style>
+
 .header {
 	font-size: 50px;
 	
 }
+
+
 .hmain-menu {
 	border: 1px solid #000e98;
 	width: 100%;
@@ -34,6 +34,7 @@ function logout() {
 	background: #000e98;
 	
 }
+
 .hmain-menu .ha {
 text-decoration: none;
 color:white;
@@ -47,6 +48,7 @@ color:white;
 	color:red;
 	text-decoration: none;
 }
+
 .hmainright{
 	float:right;
 	margin:10px;
@@ -61,10 +63,17 @@ color:white;
 	float: left;
 	
 }
+
+
 .hmain-login {
 	margin:10px;
 	float:right;
+
 }
+
+
+
+
 .drop {
 	position: relative;
 	display: inline-block;
@@ -92,6 +101,9 @@ color:white;
 .drop:hover .drop span {
   background-color: #3e8e41;
 }
+
+
+
 </style>
 
 

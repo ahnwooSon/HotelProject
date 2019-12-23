@@ -7,8 +7,10 @@ function change(){
 	location.href="<%=request.getContextPath() %>/selMain.sel";
 	
 }
+
 </script>
 <style>
+
 .mainbtn {
 	font-size: 30px;
     color: white;
@@ -20,12 +22,14 @@ function change(){
 	background: #000f79db;
 	
 }
+
 .ha {
 text-decoration: none;
 color:white;
 display:inline-block;
 float: right;
     margin: 15px;
+
 }
 .ha:link, .ha:visited {
 	color:white;
@@ -35,10 +39,19 @@ float: right;
 	color:red;
 	text-decoration: none;
 }
+
 .hfloatRigth {
 	float:right;
 	color:white;
 }
+
+
+
+
+
+
+
+
 </style>
 
 <header class="hmain-menu">

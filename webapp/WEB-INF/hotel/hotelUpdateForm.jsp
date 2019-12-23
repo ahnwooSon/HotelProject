@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="member.model.Member"%>
 <%@ include file="../common/common.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -67,21 +66,7 @@
 </script>
 </head>
 <body>
-
-<%@include file="/WEB-INF/common/header.jsp"%>
-
-
-
-	<form action="updateHotel.ad" method="post" enctype="multipart/form-data" id="hotelInsertForm"> 
-	
-	
-	
-	<input type="hidden" name="s_num" value="${hotel.s_num }">
-	
-	
-	
-	
-
+	<form action="updateHotel.ho" method="post" enctype="multipart/form-data" id="hotelInsertForm"> 
 	<input type="hidden" name="h_num" value="${hotel.h_num }">
 	<input type="hidden" name="originName" value="${hotel.h_name }">
 	<p>
@@ -210,7 +195,7 @@
 		</tr>
 		</c:forEach>
 	</table>
-	<input type="submit" value="호텔수정">
+	<input type="submit" value="호텔등록">
 	</form>
 	
 </body>

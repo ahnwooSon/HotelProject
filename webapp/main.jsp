@@ -11,6 +11,12 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script> 
 <script type="text/javascript">
+
+
+
+
+
+
 $(function(){
 	
 	
@@ -18,6 +24,7 @@ $(function(){
 	
 	$('#person').click(function(){
 		$('.personbox').toggle();
+
 		
 	});
 	
@@ -44,6 +51,7 @@ $(function(){
 		$('input.adult').attr('value', i);
 		
 		
+
 	});
 	
 	$('#plus').click(function(){
@@ -176,7 +184,9 @@ $(function(){
 	 
 	
 	
+
 });
+
 </script>
 
 
@@ -195,6 +205,9 @@ $(function(){
       rel="stylesheet">
 <style>
 /***drop   *********************************************/
+
+
+
 </style>
 
 
@@ -288,7 +301,7 @@ $(function(){
 	<div class="row">
 		
 		
-		<div class="oneimage"  style="background: url(resources/img/광고.jpg) no-repeat center top; background-size:contain;">
+		<div class="oneimage"  style="background: url(resources/img/gng1.png) no-repeat center top; background-size:contain;">
 			<p></p>
 		</div>
 		<div class="oneimage"  style="background: url(resources/img/광고2.png) no-repeat center top; background-size:contain;">

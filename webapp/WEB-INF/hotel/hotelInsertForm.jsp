@@ -19,17 +19,11 @@
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 </head>
 <body> 
-
-
 <%@include file="../common/selHeader.jsp"%> 
 <div class="insertHotel-wrapper">
 	<div class="insertHotel-content">
 		<div class="wizard-form">
-			<form action="insertHo.ad" method="post" enctype="multipart/form-data" id="hotelInsertForm" class="form-register">
-				<input type="hidden" name="s_num" value="${s_num }">
-				
-				
-				
+			<form action="hotelInsert.ho" method="post" enctype="multipart/form-data" id="hotelInsertForm" class="form-register">
 				<div id="form-total">
 					<!-- SECTION 1 -->
 					<h2>

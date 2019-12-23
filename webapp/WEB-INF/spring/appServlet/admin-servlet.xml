@@ -18,11 +18,8 @@
 		up static resources in the ${webappRoot}/resources directory -->
 
 	<resources mapping="/resources/**" location="/resources/" />
-
 	<resources mapping="/css/**" location="/resources/css/" />
-
 	<resources mapping="/js/**" location="/resources/js/" />
-
 	<resources mapping="/img/**" location="/resources/img/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
@@ -33,11 +30,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
-	<context:component-scan base-package="admin" />
-	<context:component-scan base-package="member" />
-	<context:component-scan base-package="seller" />
-	<context:component-scan base-package="hotel" />
-	<context:component-scan base-package="order" />
+	<context:component-scan base-package="admin.controller" />
 	
 
 	<beans:bean id="multipartResolver"

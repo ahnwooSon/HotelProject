@@ -13,10 +13,13 @@
 	
 }
 .foot{
+
     width: 100%;
     margin: auto;
     text-align: center;
+
 }
+
 .footatag{
 	 color: #000da2;
 	 background:none;
@@ -38,6 +41,7 @@
 .companyInfo2 table tbody{
 	    margin: auto;
 }
+
 </style>
 
 
