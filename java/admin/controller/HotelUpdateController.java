@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,11 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import admin.model.AdminDao;
 import hotel.model.Hotel;
 import hotel.model.HotelDao;
 import hotel.model.Room;
 import hotel.model.RoomDao;
+import member.model.Member;
 
 @Controller("adminHotelUpdateController")
 public class HotelUpdateController {
@@ -27,6 +28,7 @@ public class HotelUpdateController {
 	private final String command = "/updateHotel.ad";
 	private final String getPage = "adHotelUpdateForm";
 	private final String gotoPage = "redirect:hotelNow.ad";
+	private final String errPage = "redirect:main.jsp";
 
 	@Autowired
 	private HotelDao hotelDao;
@@ -38,23 +40,42 @@ public class HotelUpdateController {
 	ServletContext application;
 
 	@RequestMapping(value = command, method = RequestMethod.GET)
-	public String doUpdateGet(@RequestParam("h_num") int h_num, Model model) {
-
+	public String doUpdateGet(@RequestParam("h_num") int h_num, Model model, HttpSession session) {
+		//ADMIN CHECK 
+				if ((Member) session.getAttribute("loginfo") == null) {
+					return errPage;
+				}
+				Member loginfo = (Member) session.getAttribute("loginfo");
+				String adCheck = loginfo.getM_email();
+				if (!adCheck.equals("admin@admin.com")) {
+					return errPage;
+				}
+		//ADMIN CHECK END
+				
 		Hotel hotel = hotelDao.getHotelOne(h_num);
 		List<Room> rooms = roomDao.getRoomList(hotel);
 		hotel.setRooms(rooms);
 		model.addAttribute("hotel", hotel);
-
 		return getPage;
 	}
-
+	
 	@RequestMapping(value = command, method = RequestMethod.POST)
 	public String doUpdatePost(
 			@RequestParam("filebtn") String doWhat, 
 			@RequestParam("originName") String originName,
-			Room rooms, Hotel hotel, 
-			MultipartHttpServletRequest mpfRequest) {
-
+			Room rooms, Hotel hotel, HttpSession session, MultipartHttpServletRequest mpfRequest) {
+		
+		//ADMIN CHECK 
+				if ((Member) session.getAttribute("loginfo") == null) {
+					return errPage;
+				}
+				Member loginfo = (Member) session.getAttribute("loginfo");
+				String adCheck = loginfo.getM_email();
+				if (!adCheck.equals("admin@admin.com")) {
+					return errPage;
+				}
+		//ADMIN CHECK END
+				
 		System.out.println("[POST hotel]:" + hotel);
 
 		List<MultipartFile> fileList = mpfRequest.getFiles("file");
@@ -140,25 +161,13 @@ public class HotelUpdateController {
 		hotelDao.updateHotel(hotel);
 		System.out.println("호텔수정완료");
 
-		
-		
-		
-		
-		
+	
 		int updateCnt = 0;
 		int deleteCnt = 0;
 		int insertCnt = 0;
-
-		
-		for (int i = 0; i < rooms.getType().length; i++) {
-			
-			
-			System.out.println("rooms:"+ rooms);
-			System.out.println("rooms.getNum()[i]:" + rooms.getNum()[i]);
-			
-			String r_numStr = rooms.getNum()[i];
-				
-			
+	
+		for (int i = 0; i < rooms.getType().length; i++) {		
+			String r_numStr = rooms.getNum()[i];				
 			String r_type = rooms.getType()[i];
 			int r_price = rooms.getPrice()[i];
 			int r_person = rooms.getPerson()[i];

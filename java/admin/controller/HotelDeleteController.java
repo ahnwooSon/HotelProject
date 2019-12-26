@@ -3,6 +3,7 @@ package admin.controller;
 import java.io.File;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,13 +14,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import admin.model.AdminDao;
 import hotel.model.Hotel;
 import hotel.model.HotelDao;
-import hotel.model.RoomDao;
+import member.model.Member;
 
 @Controller("adminHotelDeleteController")
 public class HotelDeleteController {
 
 	private final String command = "/deleteHotel.ad";
 	private final String gotoPage = "redirect:/hotelNow.ad";
+	private final String errPage = "redirect:/main.jsp";
 
 	@Autowired
 	private ServletContext application;
@@ -29,7 +31,19 @@ public class HotelDeleteController {
 	private AdminDao adDao;
 
 	@RequestMapping(value = command, method = RequestMethod.GET)
-	public String doAction(@RequestParam("h_num") int h_num) {
+	public String doAction(@RequestParam("h_num") int h_num, HttpSession session) {
+
+		//ADMIN CHECK 
+				if ((Member) session.getAttribute("loginfo") == null) {
+					return errPage;
+				}
+				Member loginfo = (Member) session.getAttribute("loginfo");
+				String adCheck = loginfo.getM_email();
+				if (!adCheck.equals("admin@admin.com")) {
+					return errPage;
+				}
+		//ADMIN CHECK END
+				
 		Hotel hotel = hotelDao.getHotelOne(h_num);
 		int s_num = hotel.getS_num();
 

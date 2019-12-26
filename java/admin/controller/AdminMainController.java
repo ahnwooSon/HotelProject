@@ -1,5 +1,6 @@
 package admin.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,29 +17,27 @@ public class AdminMainController {
 
 	private final String command = "/main.ad";
 	private final String getPage = "adMain";
-	private final String gotoPage = "redirect:/main.jsp";
+	private final String errPage = "redirect:/main.jsp";
 
 	@Autowired
 	QaDao qDao;
-	
-	@RequestMapping(value = command, method = RequestMethod.GET)
-	public String doAction(Model model, HttpSession session) {
 
+	@RequestMapping(value = command, method = RequestMethod.GET)
+	public String doAction(Model model, HttpSession session, HttpServletRequest request) {
+	
+		//ADMIN CHECK 
 		if ((Member) session.getAttribute("loginfo") == null) {
-			return gotoPage;
+			return errPage;
 		}
 		Member loginfo = (Member) session.getAttribute("loginfo");
 		String adCheck = loginfo.getM_email();
 		if (!adCheck.equals("admin@admin.com")) {
-			return gotoPage;
+			return errPage;
 		}
+		//ADMIN CHECK END
 		
 		int newQ = qDao.getCountNew();
 		model.addAttribute("newQ", newQ);
-		
-
 		return getPage;
-
 	}
-
 }
