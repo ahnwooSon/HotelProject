@@ -159,6 +159,8 @@ q_regDate date,
 q_checked number
 );
 
+<hr> 
+
 alter table members drop primary key cascade;
 alter table sellers drop primary key cascade;
 alter table hotel drop primary key cascade;
