@@ -16,18 +16,22 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-
-
 <style>
-
-table {
+table, th, td {
 	table-layout: fixed;
 	word-wrap: break-word;
+	text-align: center;
 }
 
 #page {
+	
 	text-align: center;
 }
+
+.material-icons{
+	color: grey;
+}
+
 
 </style>
 </head>
@@ -35,17 +39,17 @@ table {
 <%@include file="/WEB-INF/common/header.jsp"%>
 <div class="container">
 	<div class="row">
-		<div class="col-md-12">
-
-			<ul class="nav nav-tabs nav-justified">
-			<li role="presentation"><a href="main.ad" id="home">Home</a></li>
-			<li role="presentation"><a href="listSel.ad" id="seller">Seller</a></li>
-			<li role="presentation"><a href="listMem.ad" id="member">Member</a></li>
-			<li role="presentation"><a href="listQa.ad" id="qa">QA</a></li>
-			<li role="presentation" class="active"><a href="listReview.ad" >Reviews</a></li>
-		</ul>
-	</div>
-</div>
+			<div class="col">
+				<ul class="nav nav-tabs nav-justified">
+					<li role="presentation"><a href="main.ad"
+						id="home">Home</a></li>
+					<li role="presentation"><a href="listSel.ad" id="seller">Seller</a></li>
+					<li role="presentation"><a href="listQa.ad" id="qa">Q & A</a></li>
+					<li role="presentation"><a href="listMem.ad" id="member">Member</a></li>
+					<li role="presentation" class="active"><a href="listReview.ad">Reviews</a></li>
+				</ul>
+			</div>
+		</div>
 	<div class="row">
 		<div class="col page-header">
 			<h1>
@@ -96,14 +100,16 @@ table {
 							<td>${rvc.c_comment }</td>
 							<td>
 								<fmt:formatDate value="${rvc.c_date }" pattern="yyyy-MM-dd"/></td>
-							<td><a href="deleteReview.ad?c_num=${rvc.c_num }" >삭제</a></td>
+							<td><a href="deleteReview.ad?c_num=${rvc.c_num }" >삭제
+							<i class="material-icons">delete_forever</i></a>
+							</td>
 						</tr>		
 					</c:forEach>		
 			</table>
 		</div>	
 	</div>
 	<div class="row" id="page">
-		<div class="col">${pageInfo.pagingHtml}</div>
+		<div class="col"><h3>${pageInfo.pagingHtml}</h3></div>
 	</div>
 
 
