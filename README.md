@@ -1,8 +1,15 @@
 # HotelProject
 호텔프로젝트
 
-
+<19.12.26>
+자바파일(컨트롤러,모델) : C:\project_aws\middleHotel\src\main\java\admin ~
+xml : C:\project_aws\middleHotel\src\main\java\mybatis\admin
+jsp파일 : C:\project_aws\middleHotel\src\main\webapp\WEB-INF\admin ~
+이미지: C:\project_aws\middleHotel\src\main\webapp\resources\img ~
+페이징 : C:\project_aws\middleHotel\src\main\java\utility ~
 <hr>
+<hr>
+
 drop sequence member_seq;
 create sequence member_seq
 start with 1
