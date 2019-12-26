@@ -1,12 +1,12 @@
 # HotelProject
 호텔프로젝트
 
-<19.12.26 ><br><br>
-자바파일(컨트롤러,모델) : C:\project_aws\middleHotel\src\main\java\admin ~ <br>
-xml : C:\project_aws\middleHotel\src\main\java\mybatis\admin <br>
-jsp파일 : C:\project_aws\middleHotel\src\main\webapp\WEB-INF\admin ~ <br>
-이미지: C:\project_aws\middleHotel\src\main\webapp\resources\img ~ <br>
-페이징 : C:\project_aws\middleHotel\src\main\java\utility ~ <br>
+<19.12.26 업데이트><br><br>
+자바파일(컨트롤러,모델) : java\admin ~ <br>
+xml : java\mybatis\admin <br>
+jsp파일 : webapp\WEB-INF\admin ~ <br>
+이미지: webapp\resources\img ~ <br>
+페이징 : java\utility ~ <br>
 <hr> 
 <hr>
 
